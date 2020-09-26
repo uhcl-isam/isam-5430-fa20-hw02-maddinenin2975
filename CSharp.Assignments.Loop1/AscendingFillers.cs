@@ -1,38 +1,25 @@
 ﻿using System;
-using NUnit.Framework;
-using CSharp.Assignments.Tests.Library;
-using System.Text.RegularExpressions;
-namespace CSharp.Assignments.Loop1.Tests
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharp.Assignments.Loop1
 {
-    public class AscendingFillersTests
+    /// <summary>
+    /// Create an application that reads a bunch of non-negative integers line-by-line until a negative integer or
+    /// the end-of-line (CTRL-Z) has reached. The app will print out the sum of all the fillers that will make all the values
+    /// entered so far will appear in increasing order, where each value is larger than the previous number.
+    /// That is each filler is added to each input, such that the numbers will all appear in increasing order (e.g. 1, 2, 3, 10). The only exception is when the element is 0, where the current number and the subsequent numbers will restart from zero.
+    /// </summary>
+    /// <param name="a"></param>
+    /// <remarks>In essence, this app will calculate the sum of all these values added to the original numbers such that our projected numbers will appear in increasing order.</remarks>
+    /// <returns>The sum of all the fillers</returns>
+    public class AscendingFillers
     {
-        [Category("Sentinel")]
-        [TestCase(ExpectedResult = 0)]
-        [TestCase(-1, 10, 20, ExpectedResult = 0)]
-        [TestCase(5, ExpectedResult = 0)]
-        [TestCase(5, 4, ExpectedResult = 2)]
-        [TestCase(5, 6, 7, ExpectedResult = 0)]
-        [TestCase(7, 7, 7, ExpectedResult = 3)]
-        [TestCase(7, 7, 7, 7, ExpectedResult = 6)]
-        [TestCase(7, 7, 0, 7, 7, ExpectedResult = 2)]
-        [TestCase(0, 0, 0, 0, 1, ExpectedResult = 0)]
-        [TestCase(3, 4, 5, 6, 7, 8, ExpectedResult = 0)]
-        [TestCase(3, 4, 5, 0, 6, 7, 8, ExpectedResult = 0)]
-        [TestCase(8, 7, 6, 5, 4, 3, 2, 1, ExpectedResult = 56)]
-        [TestCase(1, 3, 3, 4, 6, 2, 3, 5, 9, 15, 14, 0, 1, 1, 6, 3, 7, ExpectedResult = 25)]
-        public int TestAscendingFillers(params int[] input)
+        public static void Main()
         {
-            Action app = new Action(AscendingFillers.Main);
-            string actual;
-            actual = app.Run(input);
-            var match = Regex.Match(actual, @"([-]?\d+)", RegexOptions.Singleline | RegexOptions.RightToLeft);
-            if (match == null)
-            {
-                Assert.Fail($"The last number should indicate the sum of the fillers. - {actual}");
-                return 0;
-            }
-            int actualValue = int.Parse(match.Captures[0].Value);
-            return actualValue;
+            // Complete your loop codes here.
         }
     }
 }
